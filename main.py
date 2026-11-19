@@ -5,6 +5,13 @@ app = Flask(__name__)
 search_counter = 0
 
 DEMO_DATABASE = {
+    "7505084543": {
+        "demo_id": "ZYR-XYZ-004",
+        "name": "Mudit Zyron",
+        "city": "Bhojipura, Bareilly",
+        "status": "ACTIVE - TEST MODE",
+        "note": "Custom Demo Entry"
+    },
     "9999999999": {
         "demo_id": "ZYR-XYZ-001",
         "name": "XYZ Alpha Tester",
@@ -356,8 +363,8 @@ HTML_PAGE = r"""<!DOCTYPE html>
     </div>
 
     <div class="footer">
-      ZYRON DEMO INTERFACE • FICTIONAL XYZ TESTING DATA ONLY<br />
-      No real personal data is stored or accessed.
+      ZYRON DEMO INTERFACE • TESTING DATA ONLY<br />
+      ZYRON API v1.0
     </div>
   </div>
 
@@ -379,7 +386,7 @@ HTML_PAGE = r"""<!DOCTYPE html>
       errorBox.style.display = "none";
 
       if (!/^\d{10}$/.test(input)) {
-        errorBox.textContent = "Error: कृपया 10 अंकों का सही Demo Mobile Number दर्ज करें।";
+        errorBox.textContent = "Error: Please enter a valid 10-digit demo number.";
         errorBox.style.display = "block";
         resultSection.style.display = "none";
         return;
@@ -410,7 +417,7 @@ HTML_PAGE = r"""<!DOCTYPE html>
           resultSection.style.display = "block";
         }
       } catch (err) {
-        errorBox.textContent = "Network Error: API से कनेक्ट नहीं हो सका।";
+        errorBox.textContent = "Network Error: Could not connect to API.";
         errorBox.style.display = "block";
       } finally {
         btn.textContent = "Execute Search";
@@ -450,7 +457,7 @@ def api_welcome():
         "project": "ZYRON API",
         "developer": "@zyrondev",
         "message": "Welcome to ZYRON",
-        "mode": "Fictional XYZ Testing Data",
+        "mode": "Testing Data",
         "endpoints": {
             "frontend": "/",
             "search": "/api/search?number=9999999999"
